@@ -22,78 +22,6 @@ Istor Sets Compendium
       border:none;
     }
     </style>
-  <script>
-    function copyFull() {
-  //copys inner html of target div. 
-
-  //event button
-  var copyBtn = $('.copy-btn');
-  copyBtn.on('click', function(event) {
-
-    var $this = $(this);
-
-    //find the element that has the text you want.
-    var content = $this.prev('.copy-content');
-    //creates new range object and sets text as boundaries.
-    var range = document.createRange();
-    range.selectNode(content[0]);
-    window.getSelection().addRange(range);
-
-    try {
-      // Now that we've selected the text, execute the copy command  
-      var successful = document.execCommand('copy');
-      /*var msg = successful ? 'successful' : 'unsuccessful';
-      console.log('Copy email command was ' + msg);*/
-
-      //handle success
-      $(this).after('<span class="success"></span>');
-      setTimeout(function() {
-        $('.success').addClass('show');
-        setTimeout(function() {
-          $('.success').fadeOut(function() {
-            $('.success').remove();
-          });
-        }, 1000);
-      }, 0);
-    } catch (err) {
-      //console.log('Oops, unable to copy');
-    }
-    //clear out range for next event.
-    window.getSelection().removeAllRanges();
-
-  });
-}
-
-function copyPhone() {
-  // same principle. Set a copyBtn, and a target element. In this case they are the same.
-  var copyBtn = $('.phone');
-  copyBtn.on('click', function(event) {
-    var content = $(this);
-    var range = document.createRange();
-    range.selectNode(content[0]);
-    window.getSelection().addRange(range);
-
-    try {
-      var successful = document.execCommand('copy');
-      $(this).addClass('p-success');
-      setTimeout(function() {
-        $('.phone').removeClass('p-success');
-      }, 1000);
-    } catch (err) {
-      // console.log('Oops, unable to copy');  
-    }
-
-    window.getSelection().removeAllRanges();
-
-  });
-}
-
-$(function() {
-  copyFull();
-  copyPhone();
-
-});
-  </script>
 </head>
 <body>
     <div class="pagecontainer">
@@ -122,14 +50,6 @@ $(function() {
   <h3>Mega Gengar</h3>
       <button id=Mgar type="button" onclick='document.getElementById("MegaGengar").innerHTML = "Mega Gengar @ Spooky Plate<br>Ability: Teravolt<br>EVs: EVs: 252 HP / 252 Def / 252 SpA / 252 SpD / 252 Spe <br>Modest Nature<br>IVs: 0 Atk  <br>- Shell Smash<br>- Judgment<br>- Secret Sword<br>- Black Magic"'>Show</button>  <button type="button" onclick='document.getElementById("MegaGengar").innerHTML = ""'>Hide</button>
       <p id="MegaGengar"></p>
-     
-      <br>
-      <div class="copy-content">Moscow Conference Line
-        <br> <span class="phone">5.654.7888</span>
-        <br> 7-digit access code 7896154
-        <br> Admin: 8888
-      </div>
-      <button class="copy-btn">aaa</button>
-  </body>
   </div>
+  </body>
 </html>
