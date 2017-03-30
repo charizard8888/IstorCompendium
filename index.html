@@ -22,6 +22,16 @@ Istor Sets Compendium
       border:none;
     }
     </style>
+  <script language="JavaScript">
+
+function ClipBoard() 
+{
+holdtext.innerText = copytext.innerText;
+Copied = holdtext.createTextRange();
+Copied.execCommand("Copy");
+}
+
+</script>
 </head>
 <body>
     <div class="pagecontainer">
@@ -52,7 +62,7 @@ This text will be copied onto the clipboard when you click the button below. Try
 </span>
 <textarea id="holdtext" style="display:none;">
 </textarea>
-<button onClick="ClipBoard();">Copy to Clipboard</button>
+<button onClick="ClipBoard();">Copy to Clipboarda</button>
   </div>
   </body>
 </html>
