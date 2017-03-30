@@ -22,16 +22,7 @@ Istor Sets Compendium
       border:none;
     }
     </style>
-  <script language="JavaScript">
 
-function ClipBoard() 
-{
-holdtext.innerText = copytext.innerText;
-Copied = holdtext.createTextRange();
-Copied.execCommand("Copy");
-}
-
-</script>
 </head>
 <body>
     <div class="pagecontainer">
@@ -57,12 +48,13 @@ Copied.execCommand("Copy");
   <h3>Mega Gengar</h3>
       <button id=Mgar type="button" onclick='document.getElementById("MegaGengar").innerHTML = "Mega Gengar @ Spooky Plate<br>Ability: Teravolt<br>EVs: EVs: 252 HP / 252 Def / 252 SpA / 252 SpD / 252 Spe <br>Modest Nature<br>IVs: 0 Atk  <br>- Shell Smash<br>- Judgment<br>- Secret Sword<br>- Black Magic"'>Show</button>  <button type="button" onclick='document.getElementById("MegaGengar").innerHTML = ""'>Hide</button>
       <p id="MegaGengar"></p>
-        <span id="copytext" style="height:150;width:162;background-color:pink">
-This text will be copied onto the clipboard when you click the button below. Try it!
-</span>
-<textarea id="holdtext" style="display:none;">
-</textarea>
-<button onClick="ClipBoard();">Copy to Clipboarda</button>
+          <form>
+    <textarea name="text_area" rows="10" cols="80">
+      blah blah blah blah blah blah blah 
+    </textarea>
+  <br>
+  <input type="button" value="Highlight Text" onClick="javascript:this.form.text_area.focus();this.form.text_area.select();">
+  </form>
   </div>
   </body>
 </html>
