@@ -22,36 +22,44 @@ Istor Sets Compendium
       border:none;
     }
     </style>
-<script type="text/javascript">
-  document.getElementById("copyButton").addEventListener("click", function() {
-    copyToClipboardMsg(document.getElementById("copyTarget"), "msg");
+</head>
+<body>
+    <div class="pagecontainer">
+     <h1>
+       <center>Istor Sets Compendium</center>
+       <br> 
+<a name="Index"></a>
+       Index</h1>
+<a href="#Istor">Istor Sets</a><br>
+  <a href="#BHIstor">BH Istor Sets</a>
+
+<a name="Istor"></a>
+<h2>Istor Sets</h2>
+<h3>Pacteorite</h3>
+      <button id=Pact type="button" onclick='document.getElementById("Pacteorite").innerHTML = "Pacteorite @ Choice Band/Life Orb<br>Ability: Extreme Entry<br>EVs:252 Atk / 4 Def / 252 Spe<br>Jolly Nature<br>-Stone Edge<br>- U-Turn<br>- Meteor Impact<br>- Fly / Sky Drop / Fire Punch"'>Show</button>  <button type="button" onclick='document.getElementById("Pacteorite").innerHTML = ""'>Hide</button>
+      <p id="Pacteorite"></p>
+      <h3>Maniakley</h3>
+            <button id=Man type="button" onclick='document.getElementById("Maniakley").innerHTML = "Maniakley @ Normalium Z/Steelium Z<br>Ability: Unburden<br>EVs:252 Atk / 4 HP / 252 Spe<br>Jolly Nature<br>- Drain Punch<br>- Iron Head<br>- Stone Edge<br>- Earthquake"'>Show</button>  <button type="button" onclick='document.getElementById("Maniakley").innerHTML = ""'>Hide</button>
+      <p id="Maniakley"></p>
+      <h3>Ortuska</h3>
+            <button id=Ort type="button" onclick='document.getElementById("Ortuska").innerHTML = "Ortuska @ Choice Scarf<br>Ability: Mold Breaker<br>EVs:252 Atk / 4 HP / 252 Spe<br>Jolly Nature<br>- Rotary Drill<br>- Waterfall <br>- Icicle Crash<br> - Brick Break"'>Show</button>  <button type="button" onclick='document.getElementById("Ortuska").innerHTML = ""'>Hide</button>
+      <p id="Ortuska"></p>
+
+      <h3>Detuoy</h3>
+      <button id=Det type="button" onclick='document.getElementById("Detuoy").innerHTML = "Detuoy @ Choice Band/Normalium Z<br>Ability: Aerilate<br>EVs:252 Atk / 4 Spe / 252 HP<br>Adamant Nature<br>- Explosion"'>Show</button>  <button type="button" onclick='document.getElementById("Detuoy").innerHTML = ""'>Hide</button>
+      <p id="Detuoy"></p>    
+  <a name="BHIstor"></a>
+  <h2>BH Istor Sets</h2>
+  <img src="http://www.pokestadium.com/sprites/xy/gengar-mega.gif" width="112" height="92">
+  <h3>Mega Gengar</h3>
+      <button id=Mgar type="button" onclick='document.getElementById("MegaGengar").innerHTML = "Mega Gengar @ Focus Sash<br>Ability: Illusion<br>EVs: EVs: 252 HP / 252 Def / 252 SpA / 252 SpD / 252 Spe <br>Modest Nature<br>IVs: 0 Atk  <br>- Shell Smash<br>- Moongeist Beam<br>- Secret Sword<br>- Black Magic"'>Show</button>  <button type="button" onclick='document.getElementById("MegaGengar").innerHTML = ""'>Hide</button>
+      <p id="MegaGengar"></p>
+          
+  </div>
+	<script>
+	document.getElementById("copyButton").addEventListener("click", function() {
+    copyToClipboard(document.getElementById("copyTarget"));
 });
-
-document.getElementById("copyButton2").addEventListener("click", function() {
-    copyToClipboardMsg(document.getElementById("copyTarget2"), "msg");
-});
-
-document.getElementById("pasteTarget").addEventListener("mousedown", function() {
-    this.value = "";
-});
-
-
-function copyToClipboardMsg(elem, msgElem) {
-	  var succeed = copyToClipboard(elem);
-    var msg;
-    if (!succeed) {
-        msg = "Copy not supported or blocked.  Press Ctrl+c to copy."
-    } else {
-        msg = "Text copied to the clipboard."
-    }
-    if (typeof msgElem === "string") {
-        msgElem = document.getElementById(msgElem);
-    }
-    msgElem.innerHTML = msg;
-    setTimeout(function() {
-        msgElem.innerHTML = "";
-    }, 2000);
-}
 
 function copyToClipboard(elem) {
 	  // create hidden text element, if it doesn't already exist
@@ -102,47 +110,9 @@ function copyToClipboard(elem) {
     }
     return succeed;
 }
-
-
-  </script>
-</head>
-<body>
-    <div class="pagecontainer">
-     <h1>
-       <center>Istor Sets Compendium</center>
-       <br> 
-<a name="Index"></a>
-       Index</h1>
-<a href="#Istor">Istor Sets</a><br>
-  <a href="#BHIstor">BH Istor Sets</a>
-
-<a name="Istor"></a>
-<h2>Istor Sets</h2>
-<h3>Pacteorite</h3>
-      <button id=Pact type="button" onclick='document.getElementById("Pacteorite").innerHTML = "Pacteorite @ Choice Band/Life Orb<br>Ability: Extreme Entry<br>EVs:252 Atk / 4 Def / 252 Spe<br>Jolly Nature<br>-Stone Edge<br>- U-Turn<br>- Meteor Impact<br>- Fly / Sky Drop / Fire Punch"'>Show</button>  <button type="button" onclick='document.getElementById("Pacteorite").innerHTML = ""'>Hide</button>
-      <p id="Pacteorite"></p>
-      <h3>Maniakley</h3>
-            <button id=Man type="button" onclick='document.getElementById("Maniakley").innerHTML = "Maniakley @ Normalium Z/Steelium Z<br>Ability: Unburden<br>EVs:252 Atk / 4 HP / 252 Spe<br>Jolly Nature<br>- Drain Punch<br>- Iron Head<br>- Stone Edge<br>- Earthquake"'>Show</button>  <button type="button" onclick='document.getElementById("Maniakley").innerHTML = ""'>Hide</button>
-      <p id="Maniakley"></p>
-      <h3>Ortuska</h3>
-            <button id=Ort type="button" onclick='document.getElementById("Ortuska").innerHTML = "Ortuska @ Choice Scarf<br>Ability: Mold Breaker<br>EVs:252 Atk / 4 HP / 252 Spe<br>Jolly Nature<br>- Rotary Drill<br>- Waterfall <br>- Icicle Crash<br> - Brick Break"'>Show</button>  <button type="button" onclick='document.getElementById("Ortuska").innerHTML = ""'>Hide</button>
-      <p id="Ortuska"></p>
-
-      <h3>Detuoy</h3>
-      <button id=Det type="button" onclick='document.getElementById("Detuoy").innerHTML = "Detuoy @ Choice Band/Normalium Z<br>Ability: Aerilate<br>EVs:252 Atk / 4 Spe / 252 HP<br>Adamant Nature<br>- Explosion"'>Show</button>  <button type="button" onclick='document.getElementById("Detuoy").innerHTML = ""'>Hide</button>
-      <p id="Detuoy"></p>    
-  <a name="BHIstor"></a>
-  <h2>BH Istor Sets</h2>
-  <img src="http://www.pokestadium.com/sprites/xy/gengar-mega.gif" width="112" height="92">
-  <h3>Mega Gengar</h3>
-      <button id=Mgar type="button" onclick='document.getElementById("MegaGengar").innerHTML = "Mega Gengar @ Focus Sash<br>Ability: Illusion<br>EVs: EVs: 252 HP / 252 Def / 252 SpA / 252 SpD / 252 Spe <br>Modest Nature<br>IVs: 0 Atk  <br>- Shell Smash<br>- Moongeist Beam<br>- Secret Sword<br>- Black Magic"'>Show</button>  <button type="button" onclick='document.getElementById("MegaGengar").innerHTML = ""'>Hide</button>
-      <p id="MegaGengar"></p>
-          
-  </div>
-   <input id="copyTarget" value="Some initial text"> <button id="copyButton">Copy</button><br><br>
-<span id="copyTarget2">Some Other Text</span> <button id="copyButton2">Copy</button><br><br>
-<input id="pasteTarget"> Click in this Field and hit Ctrl+V to see what is on clipboard<br><br>
-<span id="msg"></span><br>
+	</script>
+   <input type="text" id="copyTarget" value="Text to Copy"> <button id="copyButton">Copyyy</button><br><br>
+<input type="text" placeholder="Click here and press Ctrl-V to see clipboard contents">
   </body>
 </html>
 <!--For teams and all later 
