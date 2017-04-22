@@ -23,76 +23,87 @@ Istor Sets Compendium
     }
     </style>
 <script>
-  function copyFull() {
-  //copys inner html of target div. 
-
-  //event button
-  var copyBtn = $('.copy-btn');
-  copyBtn.on('click', function(event) {
-
-    var $this = $(this);
-
-    //find the element that has the text you want.
-    var content = $this.prev('.copy-content');
-    //creates new range object and sets text as boundaries.
-    var range = document.createRange();
-    range.selectNode(content[0]);
-    window.getSelection().addRange(range);
-
-    try {
-      // Now that we've selected the text, execute the copy command  
-      var successful = document.execCommand('copy');
-      /*var msg = successful ? 'successful' : 'unsuccessful';
-      console.log('Copy email command was ' + msg);*/
-
-      //handle success
-      $(this).after('<span class="success"></span>');
-      setTimeout(function() {
-        $('.success').addClass('show');
-        setTimeout(function() {
-          $('.success').fadeOut(function() {
-            $('.success').remove();
-          });
-        }, 1000);
-      }, 0);
-    } catch (err) {
-      //console.log('Oops, unable to copy');
-    }
-    //clear out range for next event.
-    window.getSelection().removeAllRanges();
-
-  });
-}
-
-function copyPhone() {
-  // same principle. Set a copyBtn, and a target element. In this case they are the same.
-  var copyBtn = $('.phone');
-  copyBtn.on('click', function(event) {
-    var content = $(this);
-    var range = document.createRange();
-    range.selectNode(content[0]);
-    window.getSelection().addRange(range);
-
-    try {
-      var successful = document.execCommand('copy');
-      $(this).addClass('p-success');
-      setTimeout(function() {
-        $('.phone').removeClass('p-success');
-      }, 1000);
-    } catch (err) {
-      // console.log('Oops, unable to copy');  
-    }
-
-    window.getSelection().removeAllRanges();
-
-  });
-}
-
-$(function() {
-  copyFull();
-  copyPhone();
-
+  document.getElementById("copyButton").addEventListener("click", function() {
+    copyToClipboardMsg(document.getElementById("copyTarget"), "msg");
 });
+
+document.getElementById("copyButton2").addEventListener("click", function() {
+    copyToClipboardMsg(document.getElementById("copyTarget2"), "msg");
+});
+
+document.getElementById("pasteTarget").addEventListener("mousedown", function() {
+    this.value = "";
+});
+
+
+function copyToClipboardMsg(elem, msgElem) {
+	  var succeed = copyToClipboard(elem);
+    var msg;
+    if (!succeed) {
+        msg = "Copy not supported or blocked.  Press Ctrl+c to copy."
+    } else {
+        msg = "Text copied to the clipboard."
+    }
+    if (typeof msgElem === "string") {
+        msgElem = document.getElementById(msgElem);
+    }
+    msgElem.innerHTML = msg;
+    setTimeout(function() {
+        msgElem.innerHTML = "";
+    }, 2000);
+}
+
+function copyToClipboard(elem) {
+	  // create hidden text element, if it doesn't already exist
+    var targetId = "_hiddenCopyText_";
+    var isInput = elem.tagName === "INPUT" || elem.tagName === "TEXTAREA";
+    var origSelectionStart, origSelectionEnd;
+    if (isInput) {
+        // can just use the original source element for the selection and copy
+        target = elem;
+        origSelectionStart = elem.selectionStart;
+        origSelectionEnd = elem.selectionEnd;
+    } else {
+        // must use a temporary form element for the selection and copy
+        target = document.getElementById(targetId);
+        if (!target) {
+            var target = document.createElement("textarea");
+            target.style.position = "absolute";
+            target.style.left = "-9999px";
+            target.style.top = "0";
+            target.id = targetId;
+            document.body.appendChild(target);
+        }
+        target.textContent = elem.textContent;
+    }
+    // select the content
+    var currentFocus = document.activeElement;
+    target.focus();
+    target.setSelectionRange(0, target.value.length);
+    
+    // copy the selection
+    var succeed;
+    try {
+    	  succeed = document.execCommand("copy");
+    } catch(e) {
+        succeed = false;
+    }
+    // restore original focus
+    if (currentFocus && typeof currentFocus.focus === "function") {
+        currentFocus.focus();
+    }
+    
+    if (isInput) {
+        // restore prior selection
+        elem.setSelectionRange(origSelectionStart, origSelectionEnd);
+    } else {
+        // clear temporary content
+        target.textContent = "";
+    }
+    return succeed;
+}
+
+
   </script>
 </head>
 <body>
@@ -128,12 +139,10 @@ $(function() {
       <p id="MegaGengar"></p>
           
   </div>
-   <div class="copy-content">Moscow Conference Line
-        <br> <span class="phone">5.654.7888</span>
-        <br> 7-digit access code 7896154
-        <br> Admin: 8888
-      </div>
-      <button class="copy-btn">Test</button>
+   <input id="copyTarget" value="Some initial text"> <button id="copyButton">Copy</button><br><br>
+<span id="copyTarget2">Some Other Text</span> <button id="copyButton2">Copy</button><br><br>
+<input id="pasteTarget"> Click in this Field and hit Ctrl+V to see what is on clipboard<br><br>
+<span id="msg"></span><br>
   </body>
 </html>
 <!--For teams and all later 
